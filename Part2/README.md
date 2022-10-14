@@ -14,8 +14,8 @@ vagrant up
 
 ## Copy config from VM to ~/.kube/config file
 ```
-vagrant scp default:/etc/rancher/k3s/k3s.yaml config
-mv config ~/.kube/config
+vagrant scp eparisotS:/etc/rancher/k3s/k3s.yaml .
+mv k3s.yaml ~/.kube/config
 ```
 
 ## Start apps
@@ -27,4 +27,5 @@ kubectl apply -f applications/
 ```
 kubectl get all
 kubectl get ingress
+curl -H "Host:app1.com" 192.168.42.110
 ```

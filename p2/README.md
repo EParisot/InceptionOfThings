@@ -1,7 +1,18 @@
+# on host machine
+```
+VBoxManage modifyvm Ubuntu --nested-hw-virt on
+```
+
+# on VM machine
 ## Install Vagrant and Kubectl
+```
+sudo apt install vagrant virtualbox kubectl
+```
 
 ## Vagrant config
 ```
+sudo mkdir /etc/vbox
+echo "* 0.0.0.0/0 ::/0" > sudo tee -a /etc/vbox/networks.conf
 vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-scp
 ```

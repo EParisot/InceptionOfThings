@@ -17,7 +17,7 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ## Vagrant config
 ```
 sudo mkdir /etc/vbox
-echo "* 0.0.0.0/0 ::/0" > sudo tee -a /etc/vbox/networks.conf
+echo "* 0.0.0.0/0 ::/0" | sudo tee -a /etc/vbox/networks.conf
 vagrant plugin install vagrant-vbguest
 vagrant plugin install vagrant-scp
 ```

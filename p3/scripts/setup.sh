@@ -1,4 +1,6 @@
-# prerequisites: k3d and kubectl
+CLUSTER_NAME="vlcjs"
+ARGOCD_MANIFEST="./confs/install.yaml"
+# prerequisites: docker k3d and kubectl
 # 1. create cluster with 2 agents (one load balancer, and one that will run argocd)
 k3d cluster create $CLUSTER_NAME --api-port 6443 -p 8080:80@loadbalancer --agents 2
 
@@ -18,10 +20,10 @@ kubectl apply -n argocd -f $ARGOCD_MANIFEST
 kubectl port-forward svc/argocd-server -n argocd 8081:443
 
 # 5. create AppProject (cannot create an app without it)
-kubectl apply -n argocd -f confs/project.yaml
+kubectl apply -n argocd -f ./confs/project.yaml
 
 # 6. create Application
-kubectl apply -n argocd -f confs/application.yaml
+kubectl apply -n argocd -f ./confs/application.yaml
 
 # 7. setup port forwarding to access the app
 # must wait for the app to be brought up in the dashboard
